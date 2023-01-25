@@ -14,28 +14,30 @@
                 #
               </th>
               <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                Id Number
+              </th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
                 Name
               </th>
               <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                Email
-              </th>
-              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                Role
+                User Id
               </th>
             </tr>
           </thead>
           <tbody>
                 @foreach ($students as $student )
                     <tr class="bg-gray-100 border-b">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
-                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            {{$user->name}}
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        {{$student->id}}
                         </td>
                         <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            {{$user->email}}
+                            {{$student->idnumber}}
                         </td>
                         <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                            Student
+                            {{$student->name}}
+                        </td>
+                        <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                        {{$student->user_id}}
                         </td>
                     </tr> 
                 @endforeach

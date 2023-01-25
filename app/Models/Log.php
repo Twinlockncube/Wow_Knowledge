@@ -5,19 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Permission extends Model
+class Log extends Model
 {
     use HasFactory;
-
     public $timestamps = false;
     protected $fillable = [
-        'id',
-        'name',
-        'date'
+        'user_id',
+        'last_login_date_time'
     ];
-
-    public function roles(){
-        return $this->belongsToMany(Role::class,'role_permission');
-    }
-
 }

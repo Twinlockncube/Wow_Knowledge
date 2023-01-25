@@ -9,6 +9,7 @@ class Role extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
     protected $fillable = [
         'id',
         'name',
@@ -21,5 +22,19 @@ class Role extends Model
 
     public function users(){
         return $this->hasMany(User::class);
+    }
+
+    public function hasPermission($permission){
+        $perms = $this->permissions->toArray();
+        $hasPerm = false;
+        foreach($perms as $perm){
+            $perm = json_decode(json_encode($perm));
+            if($perm->name===$permission){
+                $hasPerm = true;
+                break;
+            }
+          }
+        
+        return $hasPerm;
     }
 }

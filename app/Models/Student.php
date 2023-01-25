@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     use HasFactory;
-
+    public $timestamps = false;
     protected $fillable = [
         'id',
         'name',
@@ -20,4 +20,5 @@ class Student extends Model
       public function user_profile(){
         return $this->hasOne(User::class);
       }
+      
 }

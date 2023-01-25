@@ -16,9 +16,10 @@ class PermissionFactory extends Factory
      */
     public function definition()
     {
+        $permissions = ['delete','update','create','read'];
         return [
-            'name' => fake()->name(),
-            'date' => fake()->date()
+            'name' => $permissions[rand(0,count($permissions)-1)],
+            'date' => fake()->dateTimeThisMonth()
         ];
     }
 }

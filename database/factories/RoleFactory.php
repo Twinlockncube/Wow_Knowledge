@@ -16,8 +16,10 @@ class RoleFactory extends Factory
      */
     public function definition()
     {
+        $roles = ['Teacher','Student','Head','Bursar'];
         return [
-            //
+            'name' => $roles[rand(0,count($roles)-1)],
+            'date' => fake()->dateTimeThisMonth()
         ];
     }
 }

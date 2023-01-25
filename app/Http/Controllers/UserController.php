@@ -8,12 +8,11 @@ use App\Models\User;
 class UserController extends Controller
 {
     public function index(){
-        //$users =  User::with('roles');
-        $users =  User::with('roles')->first();
-        dd($users);
-       // return view('users',
-            //['users' => $users] 
-        //);
+        $users =  User::with('role')->get();
+        //dd($users);
+        return view('users',
+            ['users' => $users] 
+        );
     }
 
     public function list(Request $request){

@@ -1,7 +1,11 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\LogController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +24,9 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
+    if(!session('logged')){
+        (new LogController)->log_last();
+    }
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -30,5 +37,10 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/users',[UserController::class,'index'])->name('users.list');
+Route::get('/students',[StudentController::class,'index'])->name('students.list')
+                                                          ->middleware('access:read');
+Route::get('/roles',[RoleController::class,'index'])->name('roles.list');
+Route::get('/roles/{id}/permissions',[RoleController::class,'permissions'])->name('roles.permissions');
+Route::get('/permissions',[PermissionController::class,'index'])->name('permissions.list');
 
 require __DIR__.'/auth.php';
