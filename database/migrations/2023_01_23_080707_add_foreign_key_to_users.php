@@ -17,8 +17,7 @@ return new class extends Migration
             $table->integer('role_id')
             ->default(1)
             ->references('id')
-            ->on('roles')
-            ->onDelete('cascade');
+            ->on('roles');
         });
     }
 

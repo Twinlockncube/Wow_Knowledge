@@ -41,6 +41,9 @@ Route::get('/students',[StudentController::class,'index'])->name('students.list'
                                                           ->middleware('access:read');
 Route::get('/roles',[RoleController::class,'index'])->name('roles.list');
 Route::get('/roles/{id}/permissions',[RoleController::class,'permissions'])->name('roles.permissions');
+Route::get('/roles/{id}/removal',[RoleController::class,'perm_remover'])->name('roles.perm_remover');
 Route::get('/permissions',[PermissionController::class,'index'])->name('permissions.list');
+Route::post('add_perm',[RoleController::class,'add_perm'])->name('add_perm');
+Route::post('rem_perm',[RoleController::class,'rem_perm'])->name('rem_perm');
 
 require __DIR__.'/auth.php';
